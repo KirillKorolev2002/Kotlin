@@ -1,11 +1,15 @@
 package org.example.`Lesson 16`
 
-/*
-Задача 3 к Уроку 16
+fun main() {
+    val user = User("user123", "securePassword")
+    val hasPasswordValid = user.validatePassword(readln())
+    println(hasPasswordValid)
+}
 
-Создай класс, описывающий пользователя, который хранит поля логин и пароль.
+private class User(private val login: String, private val password: String) {
+    fun validatePassword(inputPassword: String): Boolean {
+        return password == inputPassword
+    }
+}
 
-Пароль не должен быть виден в теле главной функции, но должен быть способ проверить, что пароль введен верно. Функция валидации должна принимать строку и возвращать результат проверки (и только его – без распечатки или генерации других строк).
 
-Выведи информацию о корректности введенного пароля.
- */
