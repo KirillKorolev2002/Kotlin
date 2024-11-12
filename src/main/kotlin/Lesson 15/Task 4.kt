@@ -12,6 +12,19 @@ package org.example.`Lesson 15`
 свойств всех товаров. Имитируй процесс поиска текстовым
 сообщением «Выполняется поиск». Для выноса логики поиска используй интерфейс.
  */
-interface Search {
+fun main() {
+    val searchEngine = SearchEngine()
+    searchEngine.search("Интерфейсы в Kotlin")
+}
 
+private interface Searchable {
+    fun search(query: String)
+}
+
+private class SearchEngine : Searchable {
+    override fun search(query: String) {
+        println("Выполняется поиск по запросу: \"$query\"...")
+        Thread.sleep(10000)
+        println("Поиск завершен.")
+    }
 }
