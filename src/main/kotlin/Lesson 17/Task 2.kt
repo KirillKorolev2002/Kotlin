@@ -8,10 +8,8 @@ fun main() {
 }
 
 private class Ship(private var _name: String, var averageSpeed: Double, var homePort: String) {
-    var name: String
-        get() = _name
-        set(value) {
-            println("Имя корабля нельзя изменить!")
-        }
+    var name: String = _name
+        set(value) = println("Имя корабля нельзя изменить!")
+
 }
 
