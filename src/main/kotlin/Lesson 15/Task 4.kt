@@ -1,30 +1,22 @@
 package org.example.`Lesson 15`
 
-/*
-На сайте музыкального магазина есть товары двух категорий:
-инструменты и комплектующие к ним. Все товары имеют название и количество
-единиц на складе.
-
-Для инструментов есть возможность поиска соответствующих
-комплектующих.
-
-Опиши классы для категорий товаров. Создай общий класс  для хранения общих
-свойств всех товаров. Имитируй процесс поиска текстовым
-сообщением «Выполняется поиск». Для выноса логики поиска используй интерфейс.
- */
-fun main() {
-    val searchEngine = SearchEngine()
-    searchEngine.search("Интерфейсы в Kotlin")
+abstract class Forum(val name: String, var quantity: Int)
+interface Searchable {
+    fun searchAccessories(): String
 }
 
-private interface Searchable {
-    fun search(query: String)
-}
-
-private class SearchEngine : Searchable {
-    override fun search(query: String) {
-        println("Выполняется поиск по запросу: \"$query\"...")
-        Thread.sleep(10000)
-        println("Поиск завершен.")
+class Instrument(name: String, quantity: Int) : Forum(name, quantity), Searchable {
+    override fun searchAccessories(): String {
+        return "Выполняется поиск..."
     }
+}
+
+class Accessory(name: String, quantity: Int) : Forum(name, quantity)
+
+fun main() {
+    val guitar = Instrument(name = "Гитара", quantity = 10)
+    val stringSet = Accessory(name = "Набор струн", quantity = 50)
+    println("${guitar.name} - количество на складе: ${guitar.quantity}")
+    println("${stringSet.name} - количество на складе: ${stringSet.quantity}")
+    println(guitar.searchAccessories())
 }
