@@ -1,5 +1,6 @@
 package org.example.`Lesson 15`
 
+
 fun main() {
     val temperatureData = Temperature(25.0)
     val precipitationData = PrecipitationAmount(10.0)
