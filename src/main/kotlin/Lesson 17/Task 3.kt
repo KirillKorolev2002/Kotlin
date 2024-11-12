@@ -4,7 +4,7 @@ import kotlin.random.Random
 
 
 fun main() {
-    val secretFolder = Folder(" ", 10, Random.nextBoolean())
+    val secretFolder = Folder(" ", 1, Random.nextBoolean())
     println(secretFolder.name1)
     println(secretFolder.filesCount1)
 }
