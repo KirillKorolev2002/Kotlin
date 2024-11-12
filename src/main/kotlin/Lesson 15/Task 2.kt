@@ -1,11 +1,36 @@
 package org.example.`Lesson 15`
 
-/*
-Необходимо разработать простую систему мониторинга погодных условий, которая будет собирать данные о температуре и количестве осадков.
+fun main() {
+    val temperatureData = Temperature(25.0)
+    val precipitationData = PrecipitationAmount(10.0)
+    val weatherServer = WeatherServer()
+    weatherServer.sendData(temperatureData)
+    weatherServer.sendData(precipitationData)
+}
 
-Создай абстрактный класс WeatherStationStats. Он будет служить родителем для классов-объектов погодных данных: Temperature и PrecipitationAmount.
+private abstract class WeatherStationStats {
+    abstract fun getData(): String
+}
 
-Реализуй логику имитации отправки сообщения на сервер в классе WeatherServer. Метод отправки сообщения должен принимать объект типа WeatherStationStats и, в зависимости от типа переданного объекта, выводить соответствующие данные.
+private class Temperature(private val temperature: Double) : WeatherStationStats() {
+    override fun getData(): String {
+        return temperature.toString()
+    }
+}
 
-Создай по одному объекту для разных типов погодных данных и протестируй работу программы.
- */
+private class PrecipitationAmount(private val amount: Double) : WeatherStationStats() {
+    override fun getData(): String {
+        return amount.toString()
+    }
+}
+
+private class WeatherServer {
+    fun sendData(weatherData: WeatherStationStats) {
+        when (weatherData) {
+            is Temperature -> println("Отправляем данные о температуре: ${weatherData.getData()}")
+            is PrecipitationAmount -> println("Отправляем данные о количестве осадков: ${weatherData.getData()}")
+            else -> println("Неизвестный тип метеоданных")
+        }
+    }
+}
+
